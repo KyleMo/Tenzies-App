@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgba(11, 36, 52, 1);
@@ -13,9 +11,73 @@ body {
 
 }
 
-.App {
+.main-app {
   height: 500px;
   width: 500px;
-  background-color: white;
+  background-color: #F5F5F5;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+      padding: 20px;
+}
+
+.title {
+    font-size: 40px;
+    margin: 0;
+}
+
+.instructions {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: 0;
+    text-align: center;
+}
+
+.die-container {
+  padding: 10px 50px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
+
+.die {
+  width: 55px;
+  height: 55px;
+  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.held-die {
+  background-color: #59E391;
+}
+
+.die-num {
+    font-size: 2rem;
+}
+
+.roll-die-btn {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  background-color:rgba(80, 53, 255, 1);
+  padding: 10px 30px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.roll-die-btn:focus {
+    outline: none;
+}
+
+.roll-die-btn:active {
+    box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
