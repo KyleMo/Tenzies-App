@@ -1,80 +1,47 @@
 import React from 'react';
+import Tenzies from './components/Tenzies.js'
 import Die from './components/Die.js'
 import {nanoid} from 'nanoid'
 import Confetti from 'react-confetti'
+import Stopwatch from './components/Stopwatch.js'
 
-/**
- * Challenge: Allow the user to play a new game when the
- * button is clicked and they've already won
- */
 
 function App() {
 
-  const [tenzies, setTenzies] = React.useState(false)
-  const [diceArr, setDiceArr] = React.useState(allNewDice())
+  const [viewSetting, setViewSettings] = React.useState(false)
+  const [difficulty, setDifficulty] = React.useState(10)
+  const [extreme, setExtreme] = React.useState(false)
 
-  React.useEffect(() => {
-
-    const allHeld = diceArr.every((dice) => dice.isHeld)
-    const allSameVal = diceArr.every((dice) => dice.value === diceArr[0].value)
-
-    if (allHeld && allSameVal){
-      setTenzies(true)
-    }
-
-  },[diceArr])
-
-  function generateNewDie() {
-    return {
-      value: Math.floor(Math.random() * 6)+1,
-      isHeld: false,
-      id: nanoid()
-    }
+  function handleClick(){
+    setViewSettings(prev => !prev)
   }
 
-  function allNewDice() {
-    const diceArray = []
-    let i = 0;
-    while (i < 10){
-      diceArray.push(generateNewDie());
-      i++;
-    }
-    return diceArray;
+  function handleChange(e){
+    setDifficulty(e.target.value)
+    setViewSettings(prev => !prev)
+    setExtreme(true)
   }
 
-  function rollDice() {
-    if (!tenzies){
-      setDiceArr(diceArr => diceArr.map(dice => {
-        return dice.isHeld ? dice : generateNewDie()
-      }));
-    }
-
-    else {
-      setTenzies(false);
-      setDiceArr(allNewDice())
-    }
-
-  }
-
-  function setTrue(id){
-    setDiceArr(prevArr => prevArr.map(dice => {
-      return id === dice.id ? ({...dice, isHeld: !dice.isHeld}) : dice
-      }))
-  }
-
-  const dies = diceArr.map((dice,index) => <Die key={dice.id} isHeld={dice.isHeld} eventHandle={() => setTrue(dice.id)} value={dice.value} />)
-
-  return (
-    <main className="main-app">
-      {tenzies && <Confetti />}
-      <h1 className="title">Tenzies</h1>
-      <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
-      <div className="die-container">
-        {dies}
+  function Settings(){
+    return(
+      <div className="settings">
+        <h2>Difficulty</h2>
+        <div className="settings-difficulty">
+          <button className="setting-diff-button" onClick={handleChange} value={10}>Easy</button>
+          <button className="setting-diff-button" onClick={handleChange} value={20}>Medium</button>
+          <button className="setting-diff-button" onClick={handleChange} value={30}>Hard</button>
+          <button className="setting-diff-button" onClick={handleChange} value={30}>Extreme</button>
+        </div>
       </div>
-      <button onClick={rollDice} className="roll-die-btn">{tenzies?"New Game":"Roll"}</button>
-    </main>
-  );
+    )
+  }
+
+  return(
+    <div className={difficulty>29?"app-2":"app"}>
+      <div className="settings-button" onClick={handleClick}>{viewSetting?<span className="settings-span"><span className="settings-gear">&#8592;</span>Back</span>:<span className="settings-span"><span className="settings-gear">&#9881;</span>Settings</span>}</div>
+      {viewSetting?<Settings />:<Tenzies extreme={extreme} difficulty={difficulty}/>}
+    </div>
+  )
 }
 
 export default App;
