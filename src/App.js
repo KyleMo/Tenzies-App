@@ -18,8 +18,10 @@ function App() {
 
   function handleChange(e){
     setDifficulty(e.target.value)
+    if(e.target.value === "30"){
+      setExtreme(true)
+    }
     setViewSettings(prev => !prev)
-    setExtreme(true)
   }
 
   function Settings(){
@@ -30,7 +32,7 @@ function App() {
           <button className="setting-diff-button" onClick={handleChange} value={10}>Easy</button>
           <button className="setting-diff-button" onClick={handleChange} value={20}>Medium</button>
           <button className="setting-diff-button" onClick={handleChange} value={30}>Hard</button>
-          <button className="setting-diff-button" onClick={handleChange} value={30}>Extreme</button>
+          <button className="setting-diff-button" onClick={handleChange} value={"30"}>Extreme</button>
         </div>
       </div>
     )

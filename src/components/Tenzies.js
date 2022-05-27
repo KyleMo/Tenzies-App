@@ -12,14 +12,28 @@ function Tenzies({extreme, difficulty}) {
   const [clockRunning, setClockRunning] = React.useState(false)
   const [time, setTime] = React.useState(0);
   const [viewSettings, setViewSettings] = React.useState(false)
+  const interval = React.useRef(null)
   let width = 600;
   let height = 600;
 
+//
 
   React.useEffect(() => {
+    if(extreme && clockRunning){
+       interval.current = setInterval(()=>{
+         console.log("calling")
+        setDiceArr(diceArr => diceArr.map(dice => {
+          return dice.isHeld ? dice : generateNewDie()
+        }));
+      },1000)
+    }
+    return () => {
+      clearInterval(interval.current);
+    };
+  },[extreme, clockRunning])
 
+  React.useEffect(() => {
     let interval;
-
     if(clockRunning){
       interval = setInterval(() => {
         setTime(prevTime => prevTime + 10)
@@ -34,6 +48,7 @@ function Tenzies({extreme, difficulty}) {
     const allSameVal = diceArr.every((dice) => dice.value === diceArr[0].value)
 
     if (allHeld && allSameVal){
+      clearInterval(interval.current);
       setClockRunning(false)
       setTenzies(true)
     }
