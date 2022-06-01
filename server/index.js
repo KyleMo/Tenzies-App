@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'node:url';
 import leaderboard from './routes/leaderboard.js';
+import {} from 'dotenv/config'
 import connectDB from './config/db.js';
 
 
