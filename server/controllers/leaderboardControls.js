@@ -3,7 +3,7 @@ import TenzieMatch from '../models/tenzieMatch.js'
 
 const addMatchToLeaderboard = async(req, res) => {
   const {username, signDifficulty, extreme, time} = req.body;
-  let difficulty = "";
+  let difficulty = "Easy";
   // signDifficulty gets passed fine and is type number
 
   if(signDifficulty == 30 && extreme){
@@ -12,8 +12,6 @@ const addMatchToLeaderboard = async(req, res) => {
     difficulty = "Hard"
   } else if (signDifficulty == 20){
     difficulty = "Medium"
-  } else {
-    difficulty == "Easy"
   }
 
   const tenzieMatch = await TenzieMatch.create({
