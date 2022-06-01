@@ -1,0 +1,92 @@
+html {
+    overflow-y:scroll;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(11, 36, 52, 1);
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  overflow-y:scroll;
+
+}
+
+.tenzies-app {
+  width: 600px;
+  height: 625px;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  position: relative;
+}
+
+.tenzies-app-2 {
+  width: 600px;
+  height: 725px;
+  background-color: #F5F5F5;
+  border-radius: 10px;
+  position: relative;
+}
+
+
+.settings {
+  width: 600px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.setting-diff-button {
+  margin: 0 5px;
+}
+
+.settings-button {
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  font-size: 18px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.setting-button:hover{
+  cursor: pointer;
+}
+
+.settings-span {
+  cursor: pointer;
+}
+
+.settings-gear{
+  margin: 0 3px;
+  font-size: 23px;
+}
+
+.settings-gear:hover{
+  cursor: pointer;
+}
+
+.leaderboards-link {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 18px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.leaderboards-link:hover {
+  color: rgba(80, 53, 255, 1);
+}
