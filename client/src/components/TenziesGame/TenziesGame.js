@@ -87,7 +87,7 @@ const TenziesGame = ({extreme, difficulty}) => {
 
       } catch (e) {
         setLoading(false)
-        setError(e.response.data.message)
+        setError(e)
       }
 
   }
